@@ -22,9 +22,7 @@ def val(node) -> int:
 
 def sum_mod_10(v1: int, v2: int, carryover: Optional[int] = 0) -> (int, int):
     sum = v1 + v2 + carryover
-    value = sum % 10
-    new_carry = math.floor(sum / 10)
-    return new_carry, value
+    return divmod(sum, 10)
 
 
 class Solution:
