@@ -52,7 +52,36 @@ class Solution:
         result_node = result_node or ListNode()
         return result_node
 
+    def badrabbits_solution_adapted(
+        self,
+        l1: ListNode,
+        l2: ListNode,
+    ) -> ListNode:
+        """
+        https://leetcode.com/problems/add-two-numbers/solution/211437
+
+        fewer functions than my naive solution
+        more efficient use of variable assignments thanks to sacrificial result node
+        thinking in terms of result_tail rather than new_node/prev_node compacts things
+        and frankly, I think badrabbit's solution is more reable than what I came up with
+
+        """
+        result_node = ListNode()
+        result_tail = result_node
+        carryover = 0
+        while l1 or l2 or carryover:
+            # get new sum and carryover, and create a new node
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+            carryover, sum = divmod(v1 + v2 + carryover, 10)
+            result_tail.next = ListNode(sum)
+            # prep next iteration
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+            result_tail = result_tail.next
+        return result_node.next
+
     def addTwoNumbers(
         self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
-        return self.brute_naive(l1, l2)
+        return self.badrabbits_solution_adapted(l1, l2)

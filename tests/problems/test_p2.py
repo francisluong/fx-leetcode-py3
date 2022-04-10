@@ -41,3 +41,6 @@ class TestP2(unittest.TestCase):
 
     def test_brute_naive(self):
         return self.run_cases(self.sut.brute_naive)
+
+    def test_badrabbits_solution_adapted(self):
+        return self.run_cases(self.sut.badrabbits_solution_adapted)
