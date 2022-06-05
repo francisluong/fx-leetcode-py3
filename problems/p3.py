@@ -49,4 +49,31 @@ class SlidingWindowSolution:
         return this_max
 
 
-Solution = SlidingWindowSolution
+class OptimizedCharIndexSolution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        this_max = 0
+        left = 0
+        slen = len(s)
+        index_by_char = {}
+        # print("")
+        for right in range(slen):
+            this_char = s[right]
+            # print(
+            #     f"A: s: '{s}, this_max: {this_max}, this_char: {this_char}, left: {left}, right: {right}, index_by_char: {index_by_char}"
+            # )
+            if this_char in index_by_char:
+                # only when we encounter a char already in the index...
+                # update left to max of existing index-of-char+1 or current left
+                left = max(index_by_char[this_char] + 1, left)
+            new_max = right - left + 1
+            this_max = max(this_max, new_max)
+            # blindly add/update current char to index map
+            index_by_char[this_char] = right
+            # print(
+            #     f"B: s: '{s}, this_max: {this_max}, this_char: {this_char}, left: {left}, right: {right}, index_by_char: {index_by_char}"
+            # )
+        # print(f"=== FINAL: s: '{s}, this_max: {this_max}")
+        return this_max
+
+
+Solution = OptimizedCharIndexSolution

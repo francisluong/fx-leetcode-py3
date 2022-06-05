@@ -8,6 +8,7 @@ ANSWER_BY_CASE = {
     "abcabcbb": 3,
     "bbbbb": 1,
     "pwwkew": 3,
+    "abcdeafbdgcbb": 7,
 }
 
 
@@ -15,6 +16,7 @@ class TestP3(unittest.TestCase):
     def setUp(self) -> None:
         self.naive = sut.NaiveSolution()
         self.slide = sut.SlidingWindowSolution()
+        self.optim = sut.OptimizedCharIndexSolution()
 
     def run_cases(self, solver_fn):
         failed_cases = []
@@ -45,3 +47,6 @@ class TestP3(unittest.TestCase):
 
     def test_sliding_window(self):
         return self.run_cases(self.slide.lengthOfLongestSubstring)
+
+    def test_sliding_window(self):
+        return self.run_cases(self.optim.lengthOfLongestSubstring)
