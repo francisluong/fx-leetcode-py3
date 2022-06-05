@@ -14,6 +14,7 @@ ANSWER_BY_CASE = {
 class TestP3(unittest.TestCase):
     def setUp(self) -> None:
         self.naive = sut.NaiveSolution()
+        self.slide = sut.SlidingWindowSolution()
 
     def run_cases(self, solver_fn):
         failed_cases = []
@@ -41,3 +42,6 @@ class TestP3(unittest.TestCase):
 
     def test_brute_naive(self):
         return self.run_cases(self.naive.lengthOfLongestSubstring)
+
+    def test_sliding_window(self):
+        return self.run_cases(self.slide.lengthOfLongestSubstring)

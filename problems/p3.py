@@ -1,7 +1,3 @@
-import math
-from leet.linklist import ListNode
-from typing import List, Optional
-
 """
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
@@ -23,14 +19,34 @@ class NaiveSolution:
         last = len(s)
         if len(s) < 2:
             return len(s)
-        max = 1
+        this_max = 1
         for i in range(last):
             for j in range(i, last):
                 this_substr = s[i : j + 1]
                 if all_unique(this_substr):
-                    if max < len(this_substr):
-                        max = len(this_substr)
-        return max
+                    if this_max < len(this_substr):
+                        this_max = len(this_substr)
+        return this_max
 
 
-Solution = NaiveSolution
+class SlidingWindowSolution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        this_max = 0
+        slen = len(s)
+        for left in range(slen):
+            # left-index loop
+            encountered_chars = set()
+            encountered_chars.add(s[left])
+            for right in range(left + 1, slen):
+                # right-index loop
+                rchar = s[right]
+                if rchar in encountered_chars:
+                    break
+                else:
+                    encountered_chars.add(rchar)
+            new_max = len(encountered_chars)
+            this_max = max(this_max, new_max)
+        return this_max
+
+
+Solution = SlidingWindowSolution
