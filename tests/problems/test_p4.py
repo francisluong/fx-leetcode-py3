@@ -18,7 +18,6 @@ CASES = {
 class TestP4(unittest.TestCase):
     def setUp(self) -> None:
         self.naive = sut.NaiveSolution()
-        self.optim = sut.OptimizedSolution()
 
     def run_cases(self, solver_obj):
         failed_cases = []
@@ -40,6 +39,3 @@ class TestP4(unittest.TestCase):
 
     def test_naive(self):
         return self.run_cases(self.naive)
-
-    def test_optimized(self):
-        return self.run_cases(self.optim)
