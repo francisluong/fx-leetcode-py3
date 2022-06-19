@@ -1,5 +1,5 @@
 import unittest
-import hackerrank.plus_minus as sut
+import hackerrank.oneweekprep.day1.plus_minus as sut
 
 CASES = [
     {

@@ -1,5 +1,5 @@
 import unittest
-import hackerrank.time_conversion as sut
+import hackerrank.oneweekprep.day1.time_conversion as sut
 
 CASES = [
     {

@@ -1,5 +1,5 @@
 import unittest
-import hackerrank.mini_max_sum as sut
+import hackerrank.oneweekprep.day1.mini_max_sum as sut
 
 CASES = [
     {
