@@ -75,6 +75,18 @@ class NaiveSolution:
         return npm
 
 
+class SecondSolution:
+    def solve(self, matrix):
+        npm = np.array(matrix)
+        rows, cols = npm.shape
+        # we can work rows from the outside in
+        # start with rows 0 and -1, then 1, -2
+        # is the left half larger or the right half?
+        # take the max of each colunn and then we can sum them
+        # then we flip columns on the high side until the top row is set
+        # if the top row needs horiz flip, do that too
+
+
 def flippingMatrix(matrix):
     solver = NaiveSolution()
     # need to return an integer for the sum of top left quadrant
