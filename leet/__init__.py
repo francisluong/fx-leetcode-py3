@@ -62,6 +62,11 @@ class TestCase(unittest.TestCase):
         for descr, case in cases.items():
             expected = case["expected_result"]
             inputs = case["inputs"]
+            info = {
+                "descr": descr,
+                "case": case,
+            }
+            LOGGER.info("running case: {}".format(info))
             result = solver_obj.solve(*inputs)
             info = {
                 "result": result,
