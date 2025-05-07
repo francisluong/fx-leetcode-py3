@@ -133,3 +133,4 @@ venv/
 
 interview/
 tests/interview/
+.vscode
